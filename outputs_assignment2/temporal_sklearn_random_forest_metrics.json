@@ -1,0 +1,43 @@
+{
+  "threshold": 0.14807459107991905,
+  "test_orders": 19291,
+  "test_positive": 1021,
+  "test_prevalence": 0.05292623503188015,
+  "precision": 0.10354565422026984,
+  "recall": 0.6464250734573947,
+  "f1": 0.17849898580121704,
+  "pr_auc_trapezoid": 0.12475134486977872,
+  "roc_auc": 0.7147016378010334,
+  "confusion_matrix": {
+    "tn": 12556,
+    "fp": 5714,
+    "fn": 361,
+    "tp": 660
+  },
+  "split": "temporal",
+  "model": "sklearn_random_forest",
+  "train_orders": 61731,
+  "validation_orders": 15433,
+  "fit_wall_seconds": 1.7906435000004421,
+  "fit_timing_scope": "model.fit only; input already loaded; single Windows machine",
+  "validation_selection": {
+    "f1": 0.23413321372505047,
+    "precision": 0.16271820448877805,
+    "recall": 0.4172661870503597
+  },
+  "threshold_selection": "maximum validation F1; ties prefer precision then higher threshold",
+  "feature_columns": [
+    "total_items",
+    "total_price",
+    "total_freight",
+    "freight_ratio",
+    "max_installments",
+    "estimated_delivery_days",
+    "is_same_state",
+    "purchase_dayofweek",
+    "purchase_hour",
+    "product_weight_g"
+  ],
+  "delay_definition": "timestamp",
+  "split_definition": "chronological purchase timestamp, order_id tie-break; 64/16/20"
+}

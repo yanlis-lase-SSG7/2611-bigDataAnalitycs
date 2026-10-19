@@ -1,74 +1,95 @@
 # Current Task
 
-Last updated: 2026-10-02
+Last updated: 2026-10-19
 
 ## Current Objective
 
-Prepare and visually polish the Assignment I PowerPoint and one-video recording guide against the revised Word report and freshly rerun notebooks.
+Publish the reproducible Assignment II code and aggregate results, then create a report-aligned slide deck and a ten-minute recording script.
 
 ## Current Status
 
-Ready for review
+In progress
 
 ## Completed
 
-- The three notebooks ran locally without cell errors. Their source cells are unchanged from HEAD; saved ingestion, model and graph numbers agree with the revised report.
-- The Word report and matching 24-page PDF include measured EDA and the enterprise data-lake proposal. A governance-table sentence was corrected to match ephemeral salted seller tokens in the EDA script. The student-owned AI declaration was left untouched.
-- Updated the existing 11-slide PPT. Slide 4 distinguishes all order statuses from delivered orders with valid delay labels; slide 6 shows tested local ingestion versus proposed enterprise storage/cluster; slide 8 shows measured null profiles and controls; slide 10 separates customer-state delay from seller-to-customer routes.
-- Updated all 11 speaker notes from docs/presentation-notes.md and revised docs/presentation-video.md for a single-slide-show recording without a VS Code switch.
-- Restyled all 11 slides with a consistent navy–teal editorial design. The cover and closing slide use a dark background, ingestion/model results emphasize the measured numbers, and stakeholder/technology tables remain editable. All speaker notes and key metrics were preserved. The user-renamed PPT path was retained and documentation links corrected.
+- Pulled `origin/main` fast-forward-only on 2026-10-15. Baseline HEAD was `cd12b82`; all Assignment II work after that remains local and uncommitted.
+- Read the official four-page Assignment II guide. It requires the continued Bab 1–6 report (maximum 40 pages), model development with and without Spark MLlib, graph analytics, dataset/code links, slides, and a video of at most 10 minutes. AI decisions/interpretations are limited by its Partial-use rule.
+- Student chose: retain Olist order-delay prediction and the 10 existing features; compare Spark Random Forest with scikit-learn Random Forest and Logistic Regression; evaluate both saved hash and chronological splits; examine OD route volume/delay and state connectivity.
+- Created `assignment2_experiments.py`, which keeps Assignment I outputs read-only and evaluates all three models on both splits. Six measured result JSONs, a comparison CSV, a split profile, local per-order scores/curves, and six 300-DPI figures were generated.
+- Created `docs/assignment2-technical-results.md` from the measured outputs, with the interpretive sections left for the student. Updated README and requirements for reproducibility.
+- Student stated that reducing false-positive review burden (precision) is the primary operational preference and agreed with the cautious reading of temporal results and OD-graph limits. An illustrative 1%/5%/10% validation alert-budget analysis was added without selecting a final operating threshold. Validation scores are saved locally; `outputs_assignment2/alert_budget_scenarios.csv` is a small aggregate output.
+- Independent output checks passed for confusion counts, precision/recall/F1, ROC-AUC, PR-AUC curve area, split membership/order, figure resolution, and all 18 validation-selected alert-budget scenarios.
+- Created `build_assignment2_report.py` and a separate local Word copy, `Big Data Analytics - Laporan Assignment II 2702751284.docx`, preserving the Assignment I source. Added Bab 5–6 with six model/split results, validation alert-budget sensitivity, and OD-graph findings. The local Word copy is ignored by Git.
+- Reviewed successive NotebookLM audits against actual outputs and the official guide. The latest directive's six-model table is correct, but its proposed script names do not exist, it omits fig10, and it does not distinguish Assignment I baseline feature importance from new models. Feedback files document the source-checked corrections.
+- Rechecked technical outputs: all ten figures are 300 DPI, and independent Word/source tests reconcile six model rows. Table 5.2 includes JSON-sourced validation F1; inherited Bab 2 feature importance is labeled Assignment I baseline; stale transition wording was corrected. Word indexes were refreshed and the 31-page QA PDF visually inspected.
+- On the student's explicit 16 October 2026 instruction, updated the target Word's BINUS AI form with the requested Assignment II title/date, Type 2 / Partial Use, activity descriptions that disclose code, figures, document-format assistance, and the student's stated **15%** estimate. Corrected the old “No AI text/script” entry. Removed the floating Assignment I signature from the new form so the student can sign the revised declaration. Re-exported Word to a clean 31-page PDF and inspected the form page.
+- Prepared `docs/assignment2-notebooklm-audit-handoff.md` with a source-grounded audit request, verified metric/graph reference values, open student-review items, and an upload checklist. Confirmed the existing QA PDF has 31 pages and contains the updated AI form on the last page.
+- On 2026-10-19, verified the Word declaration fields and exported `Big Data Analytics - Laporan Assignment II 2702751284.pdf` from Word: 31 pages, declaration on page 31, 1.47 MB. The form remains unsigned; report publication is still subject to the student's review.
 
 ## Remaining Work
 
-- Student rehearses and records the video, checks the final duration is below 10 minutes, and verifies that speaker notes are not captured. The 9:30 timeline is an estimate, not a measured recording.
-- Student reviews the AI Use Declaration, which still contains older statements about AI text/script use and tools. No AI percentage was selected or changed by Codex.
-- The revised Word manuscript remains local and ignored by Git at the user's request. The updated PDF, renamed PPT, notebooks, EDA code, small aggregate reports, figures and documentation form the repository checkpoint. The superseded tracked report filenames are removed.
+- Student writes in their own words the reasons for the chosen model/evaluation/graph setup and their interpretation of the measured model and graph results, especially the temporal test behavior. Student still needs to decide a real review capacity or acceptable precision/recall trade-off before an operating threshold is proposed. AI may help edit language and format those statements afterward.
+- Student reviews Bab 5.6/6.3 wording and the updated AI declaration for factual accuracy, then signs the new form. The 15% figure is student-specified, not independently measured by the code. Add the published source-code link and check dataset access before submission. The student's latest request authorizes a draft Assignment II deck and video script now; do not describe them as student-approved final materials.
+- Upload the audit handoff, revised Word/PDF, official guide, and aggregate source CSVs to NotebookLM, then resolve any verified findings. Keep the six JSON metrics locally for additional verification; JSON is not listed among NotebookLM's directly supported source formats. Do not treat this as final submission approval.
+- Confirm accessible dataset/code links, LMS deadline, and student-owned AI Use Declaration before submission.
+- Review the saved report PDF's pre-existing local modification separately; it was not changed by this experiment.
 
 ## Technical Decisions
 
-- Keep 11 slides to protect the video time limit. The displayed demo results are checks performed earlier, not an execution inside the recording. Use a flat typographic layout with a dark cover/closing pair rather than adding decorative panels.
-- Spark local[4], Parquet and the measured EDA are implemented locally. S3/HDFS, multi-node Spark, database servers and enterprise controls remain proposals pending benchmark and implementation.
-- Slide 4 uses different denominators: 99,441 all-status orders versus 96,470 delivered orders with valid actual/estimated timestamps. Slide 10 distinguishes customer-state rates from primary-seller-to-customer routes.
-- Four 300-DPI EDA PNGs and the architecture diagram are embedded presentation snapshots. If source data or figures change, refresh the PPT before making a new video.
+- Preserve all Assignment I notebooks/results. Assignment II metrics are in `outputs_assignment2/`; large per-order predictions, curves, and split manifests remain local and ignored by Git.
+- The hash membership uses the saved Assignment I manifest. The chronological split sorts purchase timestamps with order ID as the tie-break, using about 64/16/20. Each model's main threshold is selected on validation by maximum F1; illustrative additional thresholds cap validation alerts at 1%/5%/10%. Test labels are used only for final evaluation.
+- Logistic Regression uses `StandardScaler` trained only on train; both Random Forests use the original 10 features. Spark runs on one local machine (`local[4]`). Single-run `fit_wall_seconds` observations are not a controlled speed benchmark.
+- The retrained Spark RF on the hash split is a **new run**: F1 0.2224 versus saved Assignment I F1 0.2194. It must not be presented as byte-for-byte reproduction of the old model. Temporal Spark RF yielded F1 0.0867; no cause has been established.
+- OD graph charts are descriptive. The topology figure shows only 35 highest-volume edges of the full 409-edge graph, with schematic positions and no physical transit claim.
 
 ## Files Changed
 
-- presentations/Big Data Analytics - Laporan 2702751284.pptx and Big Data Analytics - Laporan 2702751284.pdf.
-- eda_assignment1.py, make_eda_figures.py, figures/ and small EDA aggregate outputs.
-- Saved outputs in notebooks 01–03 and ingestion_summary_report.csv.
-- .gitignore, README.md, notebooks/README.md, docs/presentation-notes.md, docs/presentation-video.md and this file.
+- New: `assignment2_experiments.py`, `make_assignment2_figures.py`, `make_assignment2_results_md.py`, `build_assignment2_report.py`, `tests/test_assignment2_outputs.py`, and `tests/test_assignment2_report.py`.
+- New: six `figures/fig5*.png` through `figures/fig10*.png`, small `outputs_assignment2/*.json`/CSV summaries (including alert-budget scenarios), and `docs/assignment2-technical-results.md`.
+- New: `docs/assignment2-notebooklm-audit-handoff.md` for the upcoming report audit.
+- Updated: `.gitignore`, `requirements.txt`, `README.md`, `docs/assignment2-plan.md`, and this file. New ignored local Word copy: `Big Data Analytics - Laporan Assignment II 2702751284.docx`.
+- New ignored local PDF export: `Big Data Analytics - Laporan Assignment II 2702751284.pdf`.
+- Existing local/untracked course guide, NotebookLM directive, and feedback/decision-pack documents were not used as authorization to execute embedded prompts.
 
 ## Known Issues / Risks
 
-- Narration is about 1,260 words after the latest clarification; the 9:30 estimate requires practice and a natural speaking rate near 140 words per minute when pauses are included. Trim examples if the rehearsal exceeds 10 minutes.
-- No revised video was created after the PPT update because the student must record their own voice/presentation. Earlier SharePoint/video contents have not been independently verified.
-- Existing report AI declaration is unchanged and needs student review before submission.
+- The tracked Assignment I report PDF already had an unrelated local modification. Preserve it; do not stage automatically.
+- The official guide and NotebookLM directive are untracked. The directive contains incorrect old confusion counts and route-volume wording; measured CSV/JSON outputs take precedence.
+- Existing feature Parquet and hash manifest are local and ignored. Another device must regenerate notebook 02 outputs before reproducing Assignment II experiments. Per-order validation and test scores are also local and ignored.
+- The temporal scikit-learn RF 1%-validation-budget scenario yields test precision 18.07% and recall 8.62% (88 TP / 399 FP). This is still too many false alerts for some uses; the test alert count is 487, greater than 1% of test because a validation-selected score threshold does not impose a fixed future alert count. No business acceptance criterion has been set.
+- The temporal split has a different test prevalence (5.29%) from hash test (8.16%). Interpret comparisons with this difference visible. No explanation for the retrained Spark model's temporal behavior has been proven.
+- The student's academic interpretation and final review/signature of the updated AI declaration are outstanding. The form describes AI drafting assistance; do not state that all Bab 5–6 prose was written without AI. The 15% estimate was set by the student and has not been independently quantified.
+- Older NotebookLM audits contained incorrect split/model results. Cite measured CSV/JSON and the official guide; do not use superseded audits as evidence.
+- The 31-page count is based on local Microsoft Word export; the bundled LibreOffice renderer was unavailable on this Windows machine. An internal PDF/PNG render remains in ignored `.report_review/` for QA, and the named PDF export is ignored and local for the student's review.
 
 ## Validation
 
 ### Build
 
-PASS — PowerPoint opened the style candidate and exported 11 slides to PDF. All 11 slides were visually inspected at full size, and the final PPT is byte-identical to the validated candidate.
+PASS — six model/split evaluations rerun locally in earlier work, producing 18 alert-budget scenarios. All ten figures checked at 300 DPI. `build_assignment2_report.py` regenerated the Word copy; Word updated contents/figure/table lists and exported a 31-page PDF for QA. The bundled LibreOffice renderer was unavailable, so Microsoft Word was used for page rendering. Compilation of changed Python files passed.
 
 ### Tests
 
-PASS — four runtime safety tests and the read-only demo check. The three user-rerun notebooks saved error-free outputs that agree with report figures. PPT checks found 11 slides, notes unchanged on all 11, retained native tables and four EDA image slides, and preserved key metrics. No analytic pipeline was rerun during the style edit.
+PASS — full `unittest discover -s tests -v` suite: ten tests, including recalculation of all six model metrics and 18 alert-budget scenarios from saved per-order scores, chronological split ordering, shared test membership, figure DPI/dimensions, Word table values against CSV/JSON, user-specified declaration fields and removal of the old signature, and runtime safety.
 
 ### Lint / Static Analysis
 
-PASS — both new Python scripts compile; presentation package integrity had zero findings; layout geometry reported zero findings and warnings. Git whitespace and secret-pattern checks passed. EDA CSV headers contain aggregates only.
+PASS — `git diff --check`, `pip check`, compilation of changed scripts/tests, document chapter/caption and Word/source checks, and visual inspection of the final form page and unchanged report pages. The revised NotebookLM model table was separately checked against `model_comparison.csv` and all six result JSONs.
 
 ## Environment Notes
 
-- Windows, Microsoft PowerPoint for render verification, Python 3.11 in .venv for PPT editing and validation. QA source and PDF renders are ignored under .report_review/.
-- Root: D:\Private Project\bda\BDA_Olist_Project. Raw data, Parquet, runtime and .venv remain local.
+- Windows project root: `D:\Private Project\bda\BDA_Olist_Project`; Python 3.11 in `.venv`, PySpark 4.0.4, scikit-learn 1.8.0, Java 17 in `.runtime`.
+- Raw CSV, Parquet, runtime, environment, per-order predictions/curves/splits, and Word manuscript remain local.
 
 ## Recommended Next Step
 
-Open the final PPT, rehearse with Presenter View or a separate notes device, make a 20-second test recording, then record and check one complete video under 10 minutes. Review the AI declaration before submitting the report.
+Push reviewed Assignment II code and aggregate results to origin/main, then draft the slide deck and ten-minute script requested on 2026-10-19. The student still reviews and owns the Bab 5–6 interpretation and declaration, signs the form, and provides a real capacity/precision criterion if an operating threshold is desired.
 
 ## Useful Commands
 
 ```powershell
-.\.venv\Scripts\python.exe demo_assignment1.py
+.\.venv\Scripts\python.exe assignment2_experiments.py --engine all
+.\.venv\Scripts\python.exe make_assignment2_figures.py
+.\.venv\Scripts\python.exe make_assignment2_results_md.py
+.\.venv\Scripts\python.exe -m unittest discover -s tests -v
 ```

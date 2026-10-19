@@ -59,13 +59,30 @@ Untuk mengulang EDA dan gambar setelah notebook 01 selesai:
 
 Skrip EDA menjalankan Spark di satu mesin dan membaca Parquet keluaran notebook 01. Rancangan S3/HDFS, partisi berdasarkan waktu, katalog, dan Spark cluster dalam laporan adalah opsi enterprise yang belum diuji; tiga worker contoh adalah hipotesis sizing yang perlu benchmark.
 
+## Eksperimen Assignment II (pekerjaan berlangsung)
+
+Mahasiswa memilih mempertahankan kasus keterlambatan dan 10 fitur yang sudah ada, membandingkan Spark Random Forest dengan scikit-learn Random Forest serta Logistic Regression, menguji split hash dan waktu, dan memakai dua sudut graf asal–tujuan: volume/delay relasi serta konektivitas state. Keputusan dan interpretasi akademiknya tetap milik mahasiswa.
+
+Setelah notebook 02 menghasilkan `outputs_ml_graph/ml_delivery_delay_dataset.parquet` dan manifest split hash lokal, jalankan:
+
+```powershell
+.\.venv\Scripts\python.exe assignment2_experiments.py --engine all
+.\.venv\Scripts\python.exe make_assignment2_figures.py
+.\.venv\Scripts\python.exe make_assignment2_results_md.py
+.\.venv\Scripts\python.exe -m unittest discover -s tests -v
+```
+
+`assignment2_experiments.py` tidak mengubah notebook atau hasil Assignment I. Ringkasan metrik, profil split, dan skenario kapasitas pemeriksaan disimpan dalam `outputs_assignment2/`; skor prediksi per-order pada validation/test, kurva, dan manifest split disimpan lokal serta diabaikan Git. Skema waktu mengurutkan waktu pembelian dengan `order_id` sebagai pemutus seri, lalu membagi 64/16/20. Ambang metrik utama tiap model dipilih pada validation dengan F1 maksimum; skenario tambahan membatasi peringatan validation sebesar 1%, 5%, atau 10% untuk memperlihatkan trade-off precision. Test hanya untuk evaluasi, bukan pemilihan ambang. Logistic Regression memakai `StandardScaler` yang dipelajari dari train saja. Spark tetap `local[4]` pada satu mesin. Waktu `fit` yang tercatat adalah satu pengamatan lokal, bukan benchmark terkendali. Suite pengujian juga merekonsiliasi tabel hasil dalam salinan Word lokal terhadap CSV/JSON ketika laporan tersedia.
+
+[Lembar hasil teknis](docs/assignment2-technical-results.md) dibuat otomatis dari output dan memisahkan fakta terukur dari bagian analisis yang harus ditulis mahasiswa. Enam figur baru (`fig5`–`fig10`) berada di `figures/`; topologi graf adalah skema, bukan peta geografis. Salinan laporan Word Assignment II dibuat lokal melalui `build_assignment2_report.py` dari Word Assignment I yang diabaikan Git. Script menambahkan Bab 5–6 beserta F1 validasi, metrik test terukur, tabel, dan figur; label feature importance Bab 2 menunjukkan baseline Assignment I. Daftar isi/gambar/tabel perlu diperbarui di Word setiap kali laporan dibangun ulang. Ekspor Microsoft Word terakhir adalah 31 halaman. Salinan Word tetap lokal dan tidak diunggah otomatis. Formulir AI pada salinan Assignment II memuat judul, tanggal, uraian bantuan AI, dan estimasi 15% sesuai instruksi terbaru mahasiswa; tanda tangan lama tidak disalin sehingga mahasiswa perlu meninjau dan menandatangani formulir baru. Dokumen sumber Assignment I tidak diubah. Slide dan video Assignment II belum dibuat; tautan kode Assignment II di GitHub baru lengkap setelah perubahan ini di-commit dan di-push.
+
 Sumber notebook sudah menggunakan penemuan root/`BDA_PROJECT_DIR` untuk lintas perangkat. Output sel tersimpan berasal dari run Windows sebelumnya; perubahan path ini tidak mengubah logika perhitungan.
 
 ## Isi yang tetap lokal
 
 Dataset raw/Parquet, `.venv`, `.runtime`, backup, ekspor besar, materi kuliah, file sementara, serta script migrasi/revisi sekali pakai diabaikan dari Git. Tidak menggunakan Git LFS. Folder tersebut dapat dipulihkan terpisah atau hasilnya dibuat ulang. Repository menyertakan notebook dengan output tersimpan dan ringkasan hasil untuk memudahkan pemeriksaan dosen.
 
-Mahasiswa menyatakan video versi sebelumnya sudah tersedia di SharePoint. Karena PPT telah diperbarui, periksa apakah video yang akan dikumpulkan memakai slide final; rekam ulang bila perlu. Sebelum pengumpulan LMS, periksa akses tautan, durasi maksimal 10 menit dan deklarasi AI. Pengembangan berikutnya: validasi temporal dan analisis biaya intervensi sesuai tahap tugas berikutnya. Konteks lintas perangkat dipelihara melalui `AGENTS.md` dan `docs/current-task.md`.
+Mahasiswa menyatakan video Assignment I sebelumnya sudah tersedia di SharePoint. Sebelum pengumpulan baru, periksa akses tautan, durasi maksimal 10 menit dan deklarasi AI. Eksperimen validasi temporal Assignment II sudah dijalankan; analisis hasil dan naskah Assignment II masih harus diselesaikan. Konteks lintas perangkat dipelihara melalui `AGENTS.md` dan `docs/current-task.md`.
 
 ## Workflow Codex lintas perangkat
 

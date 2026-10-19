@@ -1,0 +1,43 @@
+{
+  "threshold": 0.10630183378579196,
+  "test_orders": 19116,
+  "test_positive": 1559,
+  "test_prevalence": 0.08155471856036828,
+  "precision": 0.15316901408450703,
+  "recall": 0.39063502245028864,
+  "f1": 0.22005420054200542,
+  "pr_auc_trapezoid": 0.15911239194840043,
+  "roc_auc": 0.6683167184622848,
+  "confusion_matrix": {
+    "tn": 14190,
+    "fp": 3367,
+    "fn": 950,
+    "tp": 609
+  },
+  "split": "hash",
+  "model": "sklearn_random_forest",
+  "train_orders": 61826,
+  "validation_orders": 15513,
+  "fit_wall_seconds": 2.0141251999993983,
+  "fit_timing_scope": "model.fit only; input already loaded; single Windows machine",
+  "validation_selection": {
+    "f1": 0.22039180765805877,
+    "precision": 0.15372670807453417,
+    "recall": 0.3891509433962264
+  },
+  "threshold_selection": "maximum validation F1; ties prefer precision then higher threshold",
+  "feature_columns": [
+    "total_items",
+    "total_price",
+    "total_freight",
+    "freight_ratio",
+    "max_installments",
+    "estimated_delivery_days",
+    "is_same_state",
+    "purchase_dayofweek",
+    "purchase_hour",
+    "product_weight_g"
+  ],
+  "delay_definition": "timestamp",
+  "split_definition": "saved order_id hash membership"
+}

@@ -44,6 +44,10 @@ outputs_ml_graph/model_data_split_manifest.csv
 outputs_ml_graph/model_validation_thresholds.csv
 outputs_ml_graph/recovered_ingestion_audit.json
 outputs_ml_graph/model_improvement_summary.md
+/outputs_assignment2/predictions/
+/outputs_assignment2/validation_predictions/
+/outputs_assignment2/splits/
+/outputs_assignment2/curves/
 *.parquet
 *.zip
 *.7z
@@ -71,6 +75,8 @@ Thumbs.db
 /Big Data Analytics - Final Project (Guide).docx
 /Big Data Analytics - Final Project (Sample).pdf
 /Big Data Analytics - Laporan 2702751284.docx
+/Big Data Analytics - Laporan Assignment II 2702751284.docx
+/Big Data Analytics - Laporan Assignment II 2702751284.pdf
 Sesi */
 [[]Submit FINAL Project[]]*
 *(old).docx
