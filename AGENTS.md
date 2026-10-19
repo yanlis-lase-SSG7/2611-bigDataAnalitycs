@@ -78,7 +78,7 @@ The user must not separately request documentation synchronization. Do not creat
 Before an authorized push:
 1. Confirm documentation reflects committed state and important cross-device context is committed.
 2. Inspect `git status` and `git log -3 --oneline`.
-3. Confirm intended branch and remote: main and origin at https://github.com/yanlis-lase-SSG7/2611-bigDataAnalitycs-assignment1.git.
+3. Confirm intended branch and remote: main and origin at https://github.com/yanlis-lase-SSG7/2611-bigDataAnalitycs.git.
 4. Run appropriate validation if not already run for these changes; do not repeat checks without reason.
 5. Push safely. If the remote advanced, inspect and integrate without discarding local work. Never force push unless explicitly requested.
 6. After push, verify success, intended upstream tracking and equality of local HEAD with the intended remote branch. Verify no required cross-device context remains only locally; report unrelated local changes if any remain.

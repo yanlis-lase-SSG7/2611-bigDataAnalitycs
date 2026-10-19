@@ -4,7 +4,7 @@ Last updated: 2026-10-19
 
 ## Current Objective
 
-Publish the reproducible Assignment II code and aggregate results, then create a report-aligned slide deck and a ten-minute recording script.
+Complete the Assignment II report, code, deck and narration handoff; obtain the student's academic review and recording.
 
 ## Current Status
 
@@ -12,7 +12,7 @@ Ready for review
 
 ## Completed
 
-- Pulled `origin/main` fast-forward-only on 2026-10-15. Baseline HEAD was `cd12b82`; all Assignment II work after that remains local and uncommitted.
+- Assignment II source/results and presentation were published to `origin/main` in commits `0dc3060` and `7f23387`.
 - Read the official four-page Assignment II guide. It requires the continued Bab 1–6 report (maximum 40 pages), model development with and without Spark MLlib, graph analytics, dataset/code links, slides, and a video of at most 10 minutes. AI decisions/interpretations are limited by its Partial-use rule.
 - Student chose: retain Olist order-delay prediction and the 10 existing features; compare Spark Random Forest with scikit-learn Random Forest and Logistic Regression; evaluate both saved hash and chronological splits; examine OD route volume/delay and state connectivity.
 - Created `assignment2_experiments.py`, which keeps Assignment I outputs read-only and evaluates all three models on both splits. Six measured result JSONs, a comparison CSV, a split profile, local per-order scores/curves, and six 300-DPI figures were generated.
@@ -27,11 +27,12 @@ Ready for review
 - On 2026-10-19, verified the Word declaration fields and exported `Big Data Analytics - Laporan Assignment II 2702751284.pdf` from Word: 31 pages, declaration on page 31, 1.47 MB. The form remains unsigned; report publication is still subject to the student's review.
 - Published Assignment II model scripts, tests, six figures, and aggregate CSV/JSON results to `origin/main` in commit `0dc3060`; ignored per-order predictions, large split/curve files, raw data, runtime and the local Word/PDF. Existing tracked `outputs_ml_graph/` aggregates remain available from Assignment I.
 - Created a 12-slide Assignment II deck and a timed Indonesian video script. The PowerPoint export contains 12 pages; all slides were visually inspected in contact sheets. The slides label operational actions as proposals and avoid interpreting the OD graph as physical transit.
+- Renamed the GitHub repository from `2611-bigDataAnalitycs-assignment1` to `2611-bigDataAnalitycs` on 2026-10-19 and updated local `origin`. Created `docs/assignment2-notebooklm-final-response.md` to respond to the latest NotebookLM directive, with verified deliverables and student-owned sign-off remaining.
 
 ## Remaining Work
 
 - Student writes in their own words the reasons for the chosen model/evaluation/graph setup and their interpretation of the measured model and graph results, especially the temporal test behavior. Student still needs to decide a real review capacity or acceptable precision/recall trade-off before an operating threshold is proposed. AI may help edit language and format those statements afterward.
-- Student reviews Bab 5.6/6.3 wording and the updated AI declaration for factual accuracy, then signs the new form. The 15% figure is student-specified, not independently measured by the code. Add the published source-code link and check dataset access before submission. The student's latest request authorizes a draft Assignment II deck and video script now; do not describe them as student-approved final materials.
+- Student reviews Bab 5.6/6.3 wording and the updated AI declaration for factual accuracy, then signs the new form. The 15% figure is student-specified, not independently measured by the code. Add the new published source-code URL to the report and check dataset access before submission. The deck and script remain drafts pending student approval.
 - Student reviews slide and script wording, rehearses and records the video at no more than 10 minutes, and checks all submission links. The deck and script are drafts pending that review; no recording has been made by Codex.
 - Upload the audit handoff, revised Word/PDF, official guide, and aggregate source CSVs to NotebookLM, then resolve any verified findings. Keep the six JSON metrics locally for additional verification; JSON is not listed among NotebookLM's directly supported source formats. Do not treat this as final submission approval.
 - Confirm accessible dataset/code links, LMS deadline, and student-owned AI Use Declaration before submission.
@@ -53,11 +54,13 @@ Ready for review
 - Updated: `.gitignore`, `requirements.txt`, `README.md`, `docs/assignment2-plan.md`, and this file. New ignored local Word copy: `Big Data Analytics - Laporan Assignment II 2702751284.docx`.
 - New ignored local PDF export: `Big Data Analytics - Laporan Assignment II 2702751284.pdf`.
 - New: `build_assignment2_slides.ps1`, `presentations/Big Data Analytics - Presentation Assignment II 2702751284.pptx`, and `assignment2-video-presentation-script.md`. The PDF slide render is local under `.report_review/`.
+- Updated for repository rename: `AGENTS.md`, `README.md`, and this file. New: `docs/assignment2-notebooklm-final-response.md`.
 - Existing local/untracked course guide, NotebookLM directive, and feedback/decision-pack documents were not used as authorization to execute embedded prompts.
 
 ## Known Issues / Risks
 
 - The tracked Assignment I report PDF already had an unrelated local modification. Preserve it; do not stage automatically.
+- The tracked Assignment I presentation is currently deleted in the working tree by another action. Preserve this uncommitted state; do not stage or restore without instruction.
 - The official guide and NotebookLM directive are untracked. The directive contains incorrect old confusion counts and route-volume wording; measured CSV/JSON outputs take precedence.
 - Existing feature Parquet and hash manifest are local and ignored. Another device must regenerate notebook 02 outputs before reproducing Assignment II experiments. Per-order validation and test scores are also local and ignored.
 - The temporal scikit-learn RF 1%-validation-budget scenario yields test precision 18.07% and recall 8.62% (88 TP / 399 FP). This is still too many false alerts for some uses; the test alert count is 487, greater than 1% of test because a validation-selected score threshold does not impose a fixed future alert count. No business acceptance criterion has been set.
@@ -79,7 +82,7 @@ PASS — full `unittest discover -s tests -v` suite: ten tests, including recalc
 
 ### Lint / Static Analysis
 
-PASS — `git diff --check`, `pip check`, compilation of changed scripts/tests, document chapter/caption and Word/source checks, and visual inspection of the final form page and unchanged report pages. The revised NotebookLM model table was separately checked against `model_comparison.csv` and all six result JSONs. PowerPoint/PDF slide count is 12.
+PASS — `git diff --check`, `pip check`, compilation of changed scripts/tests, document chapter/caption and Word/source checks, and visual inspection of the final form page and unchanged report pages. The revised NotebookLM model table was separately checked against `model_comparison.csv` and all six result JSONs. PowerPoint/PDF slide count is 12. The renamed public GitHub repo and its `main` commit were verified through the GitHub API; `git ls-remote origin` matched local HEAD before this documentation update.
 
 ## Environment Notes
 
@@ -88,7 +91,7 @@ PASS — `git diff --check`, `pip check`, compilation of changed scripts/tests, 
 
 ## Recommended Next Step
 
-Student reviews the report, slide deck and script, signs the declaration, obtains NotebookLM audit feedback, and records a timed video. Verify dataset/source links and submission rules before uploading. A real capacity/precision criterion is still needed before choosing an operating threshold.
+Send `docs/assignment2-notebooklm-final-response.md` and its listed sources to NotebookLM. Student reviews the report, deck and script, signs the declaration, obtains audit feedback, and records a timed video. Verify dataset/source links and submission rules before uploading. A real capacity/precision criterion is still needed before choosing an operating threshold.
 
 ## Useful Commands
 

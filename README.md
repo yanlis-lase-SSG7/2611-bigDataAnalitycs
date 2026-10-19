@@ -37,8 +37,8 @@ Review menunjukkan asosiasi, bukan kausalitas. Graf tidak merekam transit atau m
 Prasyarat: Windows x64, Python 3.11 64-bit, internet untuk setup, dan sembilan CSV Olist. Java/Hadoop/Spark lokal disiapkan oleh `setup_runtime.py`; tidak perlu menyertakan `.runtime` atau `.venv` dalam ZIP untuk dosen. VS Code adalah editor; gunakan kernel lokal, bukan Colab.
 
 ```powershell
-git clone https://github.com/yanlis-lase-SSG7/2611-bigDataAnalitycs-assignment1.git
-Set-Location 2611-bigDataAnalitycs-assignment1
+git clone https://github.com/yanlis-lase-SSG7/2611-bigDataAnalitycs.git
+Set-Location 2611-bigDataAnalitycs
 py -3.11 -m venv .venv
 .\.venv\Scripts\python.exe -m pip install -r requirements.txt
 .\.venv\Scripts\python.exe setup_runtime.py
@@ -76,7 +76,7 @@ Setelah notebook 02 menghasilkan `outputs_ml_graph/ml_delivery_delay_dataset.par
 
 [Lembar hasil teknis](docs/assignment2-technical-results.md) dibuat otomatis dari output dan memisahkan fakta terukur dari bagian analisis yang harus ditulis mahasiswa. Enam figur baru (`fig5`–`fig10`) berada di `figures/`; topologi graf adalah skema, bukan peta geografis. Salinan laporan Word Assignment II dibuat lokal melalui `build_assignment2_report.py` dari Word Assignment I yang diabaikan Git. Script menambahkan Bab 5–6 beserta F1 validasi, metrik test terukur, tabel, dan figur; label feature importance Bab 2 menunjukkan baseline Assignment I. Daftar isi/gambar/tabel perlu diperbarui di Word setiap kali laporan dibangun ulang. Ekspor Microsoft Word terakhir adalah 31 halaman; PDF bernama sama juga tersedia lokal. Keduanya diabaikan Git untuk peninjauan dan penandatanganan mahasiswa. Formulir AI pada salinan Assignment II memuat judul, tanggal, uraian bantuan AI, dan estimasi 15% sesuai instruksi terbaru mahasiswa; tanda tangan lama tidak disalin. Dokumen sumber Assignment I tidak diubah.
 
-Kode eksperimen dan hasil agregat Assignment II telah diterbitkan di [repositori GitHub](https://github.com/yanlis-lase-SSG7/2611-bigDataAnalitycs-assignment1) pada branch `main`. File seperti `02_ml_pipeline.py` atau `03_graph_analytics.py` yang disebut dalam arahan eksternal tidak dibuat karena implementasi proyek sebenarnya memakai notebook 01–03, `assignment2_experiments.py`, dan `make_assignment2_figures.py`. Prediksi per-order, manifest split, kurva berukuran besar, data mentah, dan runtime tetap lokal; jalankan notebook 01–02 sebelum mereproduksi eksperimen pada perangkat lain.
+Kode eksperimen dan hasil agregat Assignment II telah diterbitkan di [repositori GitHub](https://github.com/yanlis-lase-SSG7/2611-bigDataAnalitycs) pada branch `main`. File seperti `02_ml_pipeline.py` atau `03_graph_analytics.py` yang disebut dalam arahan eksternal tidak dibuat karena implementasi proyek sebenarnya memakai notebook 01–03, `assignment2_experiments.py`, dan `make_assignment2_figures.py`. Prediksi per-order, manifest split, kurva berukuran besar, data mentah, dan runtime tetap lokal; jalankan notebook 01–02 sebelum mereproduksi eksperimen pada perangkat lain.
 
 [Presentasi Assignment II](presentations/Big%20Data%20Analytics%20-%20Presentation%20Assignment%20II%202702751284.pptx) berisi 12 slide untuk video maksimal 10 menit. [Naskah rekaman](assignment2-video-presentation-script.md) memiliki alokasi waktu per slide; keduanya adalah draf untuk ditinjau mahasiswa terhadap laporan sebelum direkam. Deck dapat dibuat ulang di Windows dengan PowerPoint terpasang melalui `build_assignment2_slides.ps1`. Ekspor PDF deck untuk pemeriksaan visual berada lokal di `.report_review/`.
 
