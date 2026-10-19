@@ -8,7 +8,7 @@ Publish the reproducible Assignment II code and aggregate results, then create a
 
 ## Current Status
 
-In progress
+Ready for review
 
 ## Completed
 
@@ -25,11 +25,14 @@ In progress
 - On the student's explicit 16 October 2026 instruction, updated the target Word's BINUS AI form with the requested Assignment II title/date, Type 2 / Partial Use, activity descriptions that disclose code, figures, document-format assistance, and the student's stated **15%** estimate. Corrected the old “No AI text/script” entry. Removed the floating Assignment I signature from the new form so the student can sign the revised declaration. Re-exported Word to a clean 31-page PDF and inspected the form page.
 - Prepared `docs/assignment2-notebooklm-audit-handoff.md` with a source-grounded audit request, verified metric/graph reference values, open student-review items, and an upload checklist. Confirmed the existing QA PDF has 31 pages and contains the updated AI form on the last page.
 - On 2026-10-19, verified the Word declaration fields and exported `Big Data Analytics - Laporan Assignment II 2702751284.pdf` from Word: 31 pages, declaration on page 31, 1.47 MB. The form remains unsigned; report publication is still subject to the student's review.
+- Published Assignment II model scripts, tests, six figures, and aggregate CSV/JSON results to `origin/main` in commit `0dc3060`; ignored per-order predictions, large split/curve files, raw data, runtime and the local Word/PDF. Existing tracked `outputs_ml_graph/` aggregates remain available from Assignment I.
+- Created a 12-slide Assignment II deck and a timed Indonesian video script. The PowerPoint export contains 12 pages; all slides were visually inspected in contact sheets. The slides label operational actions as proposals and avoid interpreting the OD graph as physical transit.
 
 ## Remaining Work
 
 - Student writes in their own words the reasons for the chosen model/evaluation/graph setup and their interpretation of the measured model and graph results, especially the temporal test behavior. Student still needs to decide a real review capacity or acceptable precision/recall trade-off before an operating threshold is proposed. AI may help edit language and format those statements afterward.
 - Student reviews Bab 5.6/6.3 wording and the updated AI declaration for factual accuracy, then signs the new form. The 15% figure is student-specified, not independently measured by the code. Add the published source-code link and check dataset access before submission. The student's latest request authorizes a draft Assignment II deck and video script now; do not describe them as student-approved final materials.
+- Student reviews slide and script wording, rehearses and records the video at no more than 10 minutes, and checks all submission links. The deck and script are drafts pending that review; no recording has been made by Codex.
 - Upload the audit handoff, revised Word/PDF, official guide, and aggregate source CSVs to NotebookLM, then resolve any verified findings. Keep the six JSON metrics locally for additional verification; JSON is not listed among NotebookLM's directly supported source formats. Do not treat this as final submission approval.
 - Confirm accessible dataset/code links, LMS deadline, and student-owned AI Use Declaration before submission.
 - Review the saved report PDF's pre-existing local modification separately; it was not changed by this experiment.
@@ -49,6 +52,7 @@ In progress
 - New: `docs/assignment2-notebooklm-audit-handoff.md` for the upcoming report audit.
 - Updated: `.gitignore`, `requirements.txt`, `README.md`, `docs/assignment2-plan.md`, and this file. New ignored local Word copy: `Big Data Analytics - Laporan Assignment II 2702751284.docx`.
 - New ignored local PDF export: `Big Data Analytics - Laporan Assignment II 2702751284.pdf`.
+- New: `build_assignment2_slides.ps1`, `presentations/Big Data Analytics - Presentation Assignment II 2702751284.pptx`, and `assignment2-video-presentation-script.md`. The PDF slide render is local under `.report_review/`.
 - Existing local/untracked course guide, NotebookLM directive, and feedback/decision-pack documents were not used as authorization to execute embedded prompts.
 
 ## Known Issues / Risks
@@ -59,6 +63,7 @@ In progress
 - The temporal scikit-learn RF 1%-validation-budget scenario yields test precision 18.07% and recall 8.62% (88 TP / 399 FP). This is still too many false alerts for some uses; the test alert count is 487, greater than 1% of test because a validation-selected score threshold does not impose a fixed future alert count. No business acceptance criterion has been set.
 - The temporal split has a different test prevalence (5.29%) from hash test (8.16%). Interpret comparisons with this difference visible. No explanation for the retrained Spark model's temporal behavior has been proven.
 - The student's academic interpretation and final review/signature of the updated AI declaration are outstanding. The form describes AI drafting assistance; do not state that all Bab 5–6 prose was written without AI. The 15% estimate was set by the student and has not been independently quantified.
+- The slide deck and video script need the student's final academic review. The video itself has not been recorded; run a timed rehearsal before claiming compliance with the ten-minute limit.
 - Older NotebookLM audits contained incorrect split/model results. Cite measured CSV/JSON and the official guide; do not use superseded audits as evidence.
 - The 31-page count is based on local Microsoft Word export; the bundled LibreOffice renderer was unavailable on this Windows machine. An internal PDF/PNG render remains in ignored `.report_review/` for QA, and the named PDF export is ignored and local for the student's review.
 
@@ -66,7 +71,7 @@ In progress
 
 ### Build
 
-PASS — six model/split evaluations rerun locally in earlier work, producing 18 alert-budget scenarios. All ten figures checked at 300 DPI. `build_assignment2_report.py` regenerated the Word copy; Word updated contents/figure/table lists and exported a 31-page PDF for QA. The bundled LibreOffice renderer was unavailable, so Microsoft Word was used for page rendering. Compilation of changed Python files passed.
+PASS — six model/split evaluations rerun locally in earlier work, producing 18 alert-budget scenarios. All ten figures checked at 300 DPI. Word exported the report to a 31-page, 1.47-MB PDF with the declaration on page 31. PowerPoint created a 12-slide PPTX and PDF QA render; all 12 slides were visually inspected in contact sheets. Compilation of changed Python files passed.
 
 ### Tests
 
@@ -74,7 +79,7 @@ PASS — full `unittest discover -s tests -v` suite: ten tests, including recalc
 
 ### Lint / Static Analysis
 
-PASS — `git diff --check`, `pip check`, compilation of changed scripts/tests, document chapter/caption and Word/source checks, and visual inspection of the final form page and unchanged report pages. The revised NotebookLM model table was separately checked against `model_comparison.csv` and all six result JSONs.
+PASS — `git diff --check`, `pip check`, compilation of changed scripts/tests, document chapter/caption and Word/source checks, and visual inspection of the final form page and unchanged report pages. The revised NotebookLM model table was separately checked against `model_comparison.csv` and all six result JSONs. PowerPoint/PDF slide count is 12.
 
 ## Environment Notes
 
@@ -83,7 +88,7 @@ PASS — `git diff --check`, `pip check`, compilation of changed scripts/tests, 
 
 ## Recommended Next Step
 
-Push reviewed Assignment II code and aggregate results to origin/main, then draft the slide deck and ten-minute script requested on 2026-10-19. The student still reviews and owns the Bab 5–6 interpretation and declaration, signs the form, and provides a real capacity/precision criterion if an operating threshold is desired.
+Student reviews the report, slide deck and script, signs the declaration, obtains NotebookLM audit feedback, and records a timed video. Verify dataset/source links and submission rules before uploading. A real capacity/precision criterion is still needed before choosing an operating threshold.
 
 ## Useful Commands
 

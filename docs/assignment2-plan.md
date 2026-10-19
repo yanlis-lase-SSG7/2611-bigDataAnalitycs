@@ -19,14 +19,14 @@ Sumber utama: `Big Data Analytics - Assignment II (Guide) .pdf` (4 halaman). Ass
 | Evaluasi dan analisis ML | Enam JSON metrik, skor per-order, kurva, confusion matrix, profil split, 18 skenario anggaran peringatan validation, dan ringkasan teknis sudah dibuat | Mahasiswa menginterpretasikan hasil hash versus waktu, trade-off metrik, serta menetapkan kapasitas pemeriksaan atau kriteria precision yang nyata |
 | Graph analytics | Notebook 03 menyimpan graf OD NetworkX; figur konektivitas serta volume/delay relasi sudah dibuat | Mahasiswa merumuskan insight sendiri; klaim transit/hub fisik tidak didukung data |
 | Laporan Bab 1–6, ≤40 halaman | Salinan Word Assignment II lokal sudah memuat Bab 1–6, daftar isi/gambar/tabel diperbarui, formulir AI diperbarui sesuai angka/uraian yang ditentukan mahasiswa, dan ekspor Word terukur 31 halaman | Mahasiswa meninjau substansi Bab 5–6 dan deklarasi AI, lalu menandatangani formulir baru; tambahkan tautan source code setelah hasil diterbitkan serta cek akses tautan dataset sebelum pengumpulan |
-| Tautan data/kode; slide; video | Repositori GitHub, PPT dan video Assignment I | Sediakan tautan dataset yang dapat diakses dosen, pastikan kode Assignment II dieksekusi/tersimpan, lalu buat slide dan video baru sesuai hasil Assignment II |
+| Tautan data/kode; slide; video | Kode dan agregat Assignment II sudah dipublikasikan di GitHub; draf PPT 12 slide dan naskah 10 menit tersedia | Periksa akses tautan dataset, tinjau substansi slide/naskah sebagai mahasiswa, lalu rekam dan verifikasi video maksimal 10 menit |
 
 ## Urutan pelaksanaan
 
 1. **Keputusan mahasiswa sudah dicatat.** Kasus, fitur, dua pembanding non-Spark, kedua split, dan dua pertanyaan graf dipilih langsung oleh mahasiswa. Alasan lengkap dan interpretasi hasil tetap perlu ditulis dalam kata-kata mereka sendiri.
 2. **Eksperimen teknis telah dijalankan.** Baca `docs/assignment2-technical-results.md` dan output JSON/CSV sumbernya. Pertahankan hasil Assignment I sebagai baseline dan jangan menyatukan angka model lama dengan hasil pelatihan ulang.
 3. **Mahasiswa menulis analisisnya.** Mahasiswa membandingkan hasil model, menjelaskan keterbatasan, menafsirkan graph, dan menyusun kesimpulan. Setelah itu AI boleh membantu tata bahasa, konsistensi angka, tabel, dan tata letak tanpa mengubah substansi argumentasi.
-4. **Bangun paket penyerahan.** Bab 4.3–6 sudah ditambahkan pada salinan Word 31 halaman untuk ditinjau mahasiswa. Setelah tinjauan dan deklarasi AI, terbitkan kode/hasil, tambahkan tautan yang dapat diakses, lalu perbarui PPT dan video ≤10 menit dan cocokkan angka pada seluruh artefak.
+4. **Bangun paket penyerahan.** Bab 4.3–6 tersedia pada salinan Word 31 halaman untuk ditinjau mahasiswa. Kode/hasil agregat sudah diterbitkan; draf PPT dan naskah sudah dibuat. Mahasiswa masih perlu meninjau interpretasi dan deklarasi AI, memastikan tautan dataset/kode dapat diakses, lalu merekam video ≤10 menit dan mencocokkan angka pada seluruh artefak.
 
 ## Bahan pertimbangan untuk keputusan mahasiswa
 
