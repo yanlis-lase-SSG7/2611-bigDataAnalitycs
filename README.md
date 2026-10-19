@@ -9,9 +9,9 @@ Prototipe analitik untuk dataset historis Brazilian E-Commerce Public Dataset by
 - [Notebook 01](notebooks/01_Ingestion_and_Parquet_Conversion.ipynb): ingestion sembilan CSV, validasi, konversi Parquet Snappy.
 - [Notebook 02](notebooks/02_Feature_Engineering_and_ML_Prep.ipynb): fitur per order, split hash, perbandingan bobot kelas dan pemilihan ambang pada validation.
 - [Notebook 03](notebooks/03_Graph_Analytics.ipynb): graf state asal–tujuan dan analisis rute dengan NetworkX.
-- [Panduan notebook](notebooks/README.md), [catatan presentasi](docs/presentation-notes.md), dan [status pekerjaan](docs/current-task.md).
+- [Panduan notebook](notebooks/README.md) dan [status pekerjaan](docs/current-task.md).
 - [PPT Assignment I](presentations/Big%20Data%20Analytics%20-%20Laporan%202702751284.pptx): 11 slide 16:9 bergaya navy–teal dengan speaker notes percakapan, arsitektur lokal-versus-enterprise, empat grafik EDA, serta hasil ingestion, model dan graf yang telah dijalankan.
-- [Panduan rekaman](docs/presentation-video.md) dan [naskah siap baca](docs/presentation-notes.md): seluruh presentasi di PowerPoint, target latihan 9 menit 30 detik tanpa perpindahan ke VS Code.
+- Narasi Assignment I tersedia langsung pada speaker notes PPT. Panduan rekaman terpisah tidak lagi diperlukan setelah video Assignment I dibuat.
 - `demo_assignment1.py`: pemeriksaan read-only atas konsistensi ringkasan hasil tersimpan; jalankan `python demo_assignment1.py`. Script ini tidak menjalankan ulang pipeline notebook dan tidak membutuhkan package tambahan.
 - `outputs_ml_graph/`: ringkasan hasil CSV/JSON kecil dari eksekusi lokal. Dataset fitur, daftar order per split, dan seluruh tabel ambang tidak dipublikasikan.
 - `eda_assignment1.py`: profil sembilan tabel Parquet tervalidasi, pembacaan orders bertipe dengan FAILFAST, empat orphan assertion, distribusi status, delay per state pelanggan, dan ringkasan state penjual. Skrip mengekspor agregat, bukan ID pelanggan/penjual.
@@ -59,9 +59,11 @@ Untuk mengulang EDA dan gambar setelah notebook 01 selesai:
 
 Skrip EDA menjalankan Spark di satu mesin dan membaca Parquet keluaran notebook 01. Rancangan S3/HDFS, partisi berdasarkan waktu, katalog, dan Spark cluster dalam laporan adalah opsi enterprise yang belum diuji; tiga worker contoh adalah hipotesis sizing yang perlu benchmark.
 
-## Eksperimen Assignment II (pekerjaan berlangsung)
+## Eksperimen Assignment II
 
 Mahasiswa memilih mempertahankan kasus keterlambatan dan 10 fitur yang sudah ada, membandingkan Spark Random Forest dengan scikit-learn Random Forest serta Logistic Regression, menguji split hash dan waktu, dan memakai dua sudut graf asal–tujuan: volume/delay relasi serta konektivitas state. Keputusan dan interpretasi akademiknya tetap milik mahasiswa.
+
+Panduan resmi Assignment II meminta laporan lanjutan Bab 1–6 maksimal 40 halaman, pengembangan dan evaluasi model dengan serta tanpa Spark MLlib, graph analytics, tautan dataset dan kode yang sudah dieksekusi, slide, dan video maksimal 10 menit. Formulir penggunaan AI wajib ditinjau serta diisi mahasiswa. Panduan resmi tersedia lokal di luar Git.
 
 Setelah notebook 02 menghasilkan `outputs_ml_graph/ml_delivery_delay_dataset.parquet` dan manifest split hash lokal, jalankan:
 
@@ -86,7 +88,7 @@ Sumber notebook sudah menggunakan penemuan root/`BDA_PROJECT_DIR` untuk lintas p
 
 Dataset raw/Parquet, `.venv`, `.runtime`, backup, ekspor besar, materi kuliah, file sementara, serta script migrasi/revisi sekali pakai diabaikan dari Git. Tidak menggunakan Git LFS. Folder tersebut dapat dipulihkan terpisah atau hasilnya dibuat ulang. Repository menyertakan notebook dengan output tersimpan dan ringkasan hasil untuk memudahkan pemeriksaan dosen.
 
-Mahasiswa menyatakan video Assignment I sebelumnya sudah tersedia di SharePoint. Sebelum pengumpulan baru, periksa akses tautan, durasi maksimal 10 menit dan deklarasi AI. Eksperimen validasi temporal Assignment II sudah dijalankan; analisis hasil dan naskah Assignment II masih harus diselesaikan. Konteks lintas perangkat dipelihara melalui `AGENTS.md` dan `docs/current-task.md`.
+Mahasiswa menyatakan video Assignment I sebelumnya sudah tersedia di SharePoint. Sebelum pengumpulan Assignment II, periksa akses tautan, durasi maksimal 10 menit, interpretasi hasil, dan deklarasi AI. Eksperimen serta draf laporan, slide, dan naskah Assignment II sudah dibuat; peninjauan akademik dan rekaman video tetap menjadi tugas mahasiswa. Konteks lintas perangkat dipelihara melalui `AGENTS.md` dan `docs/current-task.md`.
 
 ## Workflow Codex lintas perangkat
 

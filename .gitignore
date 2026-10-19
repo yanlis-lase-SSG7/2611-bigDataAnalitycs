@@ -43,7 +43,6 @@ outputs_ml_graph/*.parquet/
 outputs_ml_graph/model_data_split_manifest.csv
 outputs_ml_graph/model_validation_thresholds.csv
 outputs_ml_graph/recovered_ingestion_audit.json
-outputs_ml_graph/model_improvement_summary.md
 /outputs_assignment2/predictions/
 /outputs_assignment2/validation_predictions/
 /outputs_assignment2/splits/
